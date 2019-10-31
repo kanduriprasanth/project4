@@ -1,0 +1,14 @@
+---
+ - hosts: all
+   tasks:
+    - name: pull the image
+      raw: docker pull kanduriprasanth/project4
+
+    - name: delete the container if already exists
+      raw: docker rmi -f kanduriprasanth/project4
+      ignore_errors: true
+
+    - name: spin the container
+      raw: docker run --name tom -it -p 44:8080 kanduriprasanth/project4
+...      
+
